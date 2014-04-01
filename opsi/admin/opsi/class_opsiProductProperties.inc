@@ -82,7 +82,7 @@ class ProductPropertyAttribute extends CompositeAttribute
   function inputValue ($value)
   {
     $values = json_decode($value);
-    if ($this->attributes[0] instanceof ArrayAttribute) {
+    if ($this->attributes[0] instanceof SetAttribute) {
       return array($values);
     } else {
       return $values;
@@ -93,7 +93,7 @@ class ProductPropertyAttribute extends CompositeAttribute
   function getValue ()
   {
     $values = $this->attributes[0]->computeLdapValue();
-    if ($this->attributes[0] instanceof ArrayAttribute) {
+    if ($this->attributes[0] instanceof SetAttribute) {
       return json_encode($values);
     } else {
       return json_encode(array($values));
